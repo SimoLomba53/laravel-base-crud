@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('author');
             $table->string('editor');
             $table->decimal('length', $precision = 3, $scale = 2);
-            $table->string('editor');
+            $table->string('poster');
         });
     }
 
