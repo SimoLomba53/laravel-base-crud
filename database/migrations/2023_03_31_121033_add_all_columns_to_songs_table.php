@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('songs', function (Blueprint $table) {
+         Schema::table('songs', function (Blueprint $table) {
             $table->string('title');
             $table->string('album');
             $table->string('author');
             $table->string('editor');
             $table->decimal('length', $precision = 3, $scale = 2);
-            $table->src('poster');
+            $table->string('editor');
         });
     }
 
