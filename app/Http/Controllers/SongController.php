@@ -15,6 +15,7 @@ class SongController extends Controller
     public function index()
     {
         $songs=Song::all();
+        return view('songs',compact('songs'));
     }
 
     /**
@@ -44,9 +45,9 @@ class SongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Song $song)
     {
-        //
+        return view('songs',compact('song'));
     }
 
     /**
