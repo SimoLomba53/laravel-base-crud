@@ -30,7 +30,7 @@
       <td>{{$song->title}}</td>
       <td>{{$song->album}}</td>
       <td>{{$song->author}}</td>
-      <td><a href="{{route('songs.show'),$song}}">DETAILS</a></td>
+      <td><a href="{{route('songs.show',$song)}}">DETAILS</a></td>
     </tr>
      @endforeach
   </tbody>
