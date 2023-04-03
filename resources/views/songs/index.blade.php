@@ -9,10 +9,17 @@
     @vite('resources/js/app.js')
 </head>
 <body>
-   <form class="d-flex flex-row col-6 offset-3 p-5">
-     <input type="text" class="form-control" name="term" id="formGroupExampleInput" placeholder="Example input">
-     <button type="submit" class="btn btn-primary">Search</button>
-   </form>
+   <div>
+    <div>
+     <form class="d-flex flex-row col-6 offset-3 p-5">
+      <input type="text" class="form-control" name="term" id="formGroupExampleInput" placeholder="Example input">
+      <button type="submit" class="btn btn-primary">Search</button>
+     </form>
+    </div>
+    <div class="d-flex justify-content-center p-2">
+      <a href="{{route('songs.create')}}" type="button" class="btn btn-primary">Create Song</a>
+    </div>
+   </div>
     <table class="table">
   <thead>
     <tr>
