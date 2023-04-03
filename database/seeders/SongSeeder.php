@@ -25,7 +25,7 @@ class SongSeeder extends Seeder
         $song->album=$faker->word();
         $song->author=$faker->word();
         $song->editor=$faker->word();
-        $song->length=$faker->randomFloat(2, 20, 30);
+        $song->length=$faker->randomDigit();
         $song->poster=$faker->word();
         
         $song->save();
