@@ -9,6 +9,10 @@
     @vite('resources/js/app.js')
 </head>
 <body>
+   <form class="d-flex flex-row col-6 offset-3 p-5">
+     <input type="text" class="form-control" name="term" id="formGroupExampleInput" placeholder="Example input">
+     <button type="submit" class="btn btn-primary">Search</button>
+   </form>
     <table class="table">
   <thead>
     <tr>

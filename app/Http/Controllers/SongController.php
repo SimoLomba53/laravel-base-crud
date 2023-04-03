@@ -12,9 +12,14 @@ class SongController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $songs=Song::all();
+        if($request->has("term")){
+            $term=$request->get('term');
+            $songs=Song::where('title','album',"%$term%")->paginate(10);
+        }else{
+            $songs=Song::paginate(10);
+        }
         return view('songs',compact('songs'));
     }
 
