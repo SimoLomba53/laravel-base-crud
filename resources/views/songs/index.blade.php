@@ -42,5 +42,6 @@
      @endforeach
   </tbody>
 </table>
+{{ $songs->links("pagination::bootstrap-5") }}
 </body>
 </html>

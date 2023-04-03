@@ -50,8 +50,9 @@ class SongController extends Controller
         $song->editor=$data['editor'];
         $song->length=$data['length'];
         $song->poster=$data['poster'];
-
         $song->save();
+
+        return redirect()->route('songs.show',$song);
         
     }
 
