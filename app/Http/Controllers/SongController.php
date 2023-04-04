@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Song;
 
 class SongController extends Controller
@@ -155,7 +156,8 @@ class SongController extends Controller
         
     ]  
     );
-      $data=$request->all();
+      //$data=$request->all();
+      $data=$this->validation($request->all(),$song->id);
       $song->update($data);
       return redirect()->route('songs.show',$song);
     }
@@ -166,8 +168,48 @@ class SongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Song $song)
     {
-        //
+        $song->delete();
+        return redirect()->route('songs.index');
+    }
+
+    private function validation($data){
+        $validator=Validator::make(
+            $data,
+            [
+        'title'=>'required|string|max:50',
+        'album'=>'required|string|max:30',
+        'author'=>'required|string|max:30',
+        'editor'=>'required|string|max:30',
+        'length'=>'required|integer',
+        'poster'=>'required|string',
+
+    ],[
+        'title.required'=>"il titolo è obbligatorio",
+        'title.string'=>"il titolo è dev'essere una stringa",
+        'title.max'=>"il titolo dev'essere massimo 50 caratteri",
+
+        'album.required'=>"l'album è obbligatorio",
+        'album.string'=>"l'album è dev'essere una stringa",
+        'album.max'=>"l'album dev'essere massimo 30 caratteri",
+
+        'author.required'=>"l'autore è obbligatorio",
+        'author.string'=>"l'autore è dev'essere una stringa",
+        'author.max'=>"l'autore dev'essere massimo 30 caratteri",
+
+        'editor.required'=>"l'editore è obbligatorio",
+        'editor.string'=>"l'editore è dev'essere una stringa",
+        'editor.max'=>"l'editore dev'essere massimo 30 caratteri",
+
+        'length.required'=>"la durata è obbligatoria",
+        'length.integer'=>"la durata dev'essere un' numero",
+
+        'poster.required'=>"il poster è obbligatorio",
+        'poster.string'=>"il poster è dev'essere una stringa",
+        
+    ])->validate();
+
+    return $validator;
     }
 }

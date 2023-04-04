@@ -39,6 +39,13 @@
       <td>{{$song->author}}</td>
       <td class="d-flex flex-row gap-3"><a href="{{route('songs.show', $song)}}">DETAILS</a>
           <a href="{{route('songs.edit', $song)}}">MODIFICA</a>
+
+          <form action="{{route('songs.destroy', $song)}}" method="POST">
+             @csrf
+             @method('delete')
+
+            <button class="text-danger border-0">DELETE</button>
+        </form>
       </td>
     </tr>
      @endforeach
