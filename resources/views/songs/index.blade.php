@@ -41,8 +41,9 @@
           <a href="{{route('songs.edit', $song)}}">MODIFICA</a>
 
           <form action="{{route('songs.destroy', $song)}}" method="POST">
-             @csrf
-             @method('delete')
+            @method('delete')
+            @csrf
+             
 
             <button class="text-danger border-0">DELETE</button>
         </form>
