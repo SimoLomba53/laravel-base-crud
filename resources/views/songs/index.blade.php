@@ -37,7 +37,9 @@
       <td>{{$song->title}}</td>
       <td>{{$song->album}}</td>
       <td>{{$song->author}}</td>
-      <td><a href="{{route('songs.show', $song)}}">DETAILS</a></td>
+      <td class="d-flex flex-row gap-3"><a href="{{route('songs.show', $song)}}">DETAILS</a>
+          <a href="{{route('songs.edit', $song)}}">MODIFICA</a>
+      </td>
     </tr>
      @endforeach
   </tbody>
