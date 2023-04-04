@@ -41,6 +41,41 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
+          $request->validate([
+        'title'=>'required|string|max:50',
+        'album'=>'required|string|max:30',
+        'author'=>'required|string|max:30',
+        'editor'=>'required|string|max:30',
+        'length'=>'required|integer',
+        'poster'=>'required|string',
+
+    ],[
+        'title.required'=>"il titolo è obbligatorio",
+        'title.string'=>"il titolo è dev'essere una stringa",
+        'title.max'=>"il titolo dev'essere massimo 50 caratteri",
+
+        'album.required'=>"l'album è obbligatorio",
+        'album.string'=>"l'album è dev'essere una stringa",
+        'album.max'=>"l'album dev'essere massimo 30 caratteri",
+
+        'author.required'=>"l'autore è obbligatorio",
+        'author.string'=>"l'autore è dev'essere una stringa",
+        'author.max'=>"l'autore dev'essere massimo 30 caratteri",
+
+        'editor.required'=>"l'editore è obbligatorio",
+        'editor.string'=>"l'editore è dev'essere una stringa",
+        'editor.max'=>"l'editore dev'essere massimo 30 caratteri",
+
+        'length.required'=>"la durata è obbligatoria",
+        'length.integer'=>"la durata dev'essere un' numero",
+        
+        'poster.required'=>"il poster è obbligatorio",
+        'poster.string'=>"il poster è dev'essere una stringa",
+        
+    ]  
+    );
+
+
         $data=$request->all();
 
         $song=new Song;
